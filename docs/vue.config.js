@@ -1,5 +1,5 @@
 module.exports = {
     baseUrl: ProcessingInstruction.env.NODE_ENV === 'production'
-        ? '/vuePractice/'
+        ? '/vuePractice/docs/'
         : '/',
    }; 
