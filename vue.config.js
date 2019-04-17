@@ -1,3 +1,5 @@
 module.exports = {
-    publicPath: '<vuePractice>'
-   } 
+    baseUrl: ProcessingInstruction.env.NODE_ENV === 'production'
+        ? '/vuePractice/'
+        : '/',
+   }; 
