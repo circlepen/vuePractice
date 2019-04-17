@@ -122,23 +122,28 @@
 
 <div id="app">
   <h2>Props 的型別</h2>
-  <prop-type :cash="cash"></prop-type>
+  <prop-type ></prop-type>
 
   <h2 class="mt-3">靜態與動態傳入數值差異</h2>
-  <prop-type cash="300"></prop-type>
+  <prop-type :cash="300"></prop-type>
 </div>
 
 <script type="text/x-template" id="propType">
 <div>
-  <input type="number" class="form-control" v-model="newCash">
+  <input type="Number" class="form-control" v-model="newCash">
   {{ typeof(cash)}}
 </div>
 </script>
 
 <script>
 Vue.component('prop-type', {
-  props: ['cash'],
-
+  // props: ['cash'],
+  props:{
+    cash:{
+      type: Number,
+      default: 100
+    }
+  },
   // 解答：
   // props: {
   //   cash: {

@@ -122,11 +122,14 @@
 
 <div id="app">
   <h2>沒有插槽可替換的狀態</h2>
-  <no-slot-component></no-slot-component>
+  <no-slot-component>123456</no-slot-component>
 
   <h2>Slot 基礎範例</h2>
+  <single-slot-component></single-slot-component>
   <single-slot-component>
-    <p>使用這段取代原本的 Slot。</p>
+    <p>使用這段取代原本的 Slot。
+    </p>
+    <br>這可以被取代
   </single-slot-component>
 
   <h2>具名插槽</h2>
@@ -134,13 +137,14 @@
   </named-slot-component>
 
   <named-slot-component>
-    <header>替換的 Header</header>
-    <template>替換的 Footer</template>
-    <template>按鈕內容</template>
+    <header slot="header">替換的 Header</header>
+    <footer slot="footer">替換的 Footer</footer>
+    <div slot="btnString">按鈕內容</div>
     <p>其餘的內容</p>
   </named-slot-component>
 </div>
 
+<!--template 1-->
 <script type="text/x-template" id="noSlotComponent">
 <div class="alert alert-warning">
   <h6>我是一個元件</h6>
@@ -149,35 +153,42 @@
   </p>
 </div>
 </script>
+<!--End template 1-->
 
+<!--template 2-->
 <script type="text/x-template" id="singleSlotComponent">
 <div class="alert alert-warning">
   <h6>我是一個元件</h6>
-  <div>
+  <slot>
     如果沒有內容，則會顯示此段落。
-  </div>
+  </slot>
 </div>
 </script>
+<!--End template 2-->
 
+<!--template 3-->
 <script type="text/x-template" id="namedSlotComponent">
 <div class="card my-3">
   <div class="card-header">
-    <div>這段是預設的文字</div>
+    <slot name="header">這段是預設的文字</slot>
   </div>
   <div class="card-body">
+
     <slot>
       <h5 class="card-title">Special title treatment</h5>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     </slot>
     <a href="#" class="btn btn-primary">
-      <div>spanGo somewhere</div>
+      <slot name="btnString">spanGo somewhere</slot>
     </a>
   </div>
   <div class="card-footer">
-    <div>這是預設的 Footer</div>
+    <slot name="footer">這是預設的 Footer</div>
   </div>
 </div>
 </script>
+<!--End template 3-->
+
 
 <script>
 Vue.component('no-slot-component', {
